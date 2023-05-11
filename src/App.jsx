@@ -4,8 +4,15 @@ import categoryImg2 from './assets/icons/2.png'
 import categoryImg3 from './assets/icons/3.png'
 import categoryImg4 from './assets/icons/4.png'
 import { FaCoffee } from "react-icons/fa";
+import { useEffect, useState } from 'react'
 
 function App() {
+  const [coffees, setCoffees] = useState([]);
+  useEffect(() => {
+    fetch('http://localhost:5000/coffees')
+      .then(res => res.json())
+      .then(data => setCoffees(data))
+  }, [])
 
   return (
     <>
@@ -56,7 +63,7 @@ function App() {
         </div>
 
         <div className='mt-6'>
-          sdfds
+          
         </div>
       </main>
     </>
