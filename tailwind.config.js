@@ -7,7 +7,9 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        'banner-img': "url('./public/banner.jpeg')"
+        'banner-img': "url('./public/banner.jpeg')",
+        'section-bg': "url('./public/sectionbg.png')",
+        'addcoffee-img': "url('./public/addcoffeebg.png')",
       },
     },
   },

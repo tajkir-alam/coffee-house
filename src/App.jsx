@@ -9,13 +9,7 @@ function App() {
 
   return (
     <>
-      {/* Header Section */}
-      <div className='bg-[#331A15] text-white text-5xl text-center py-4'>
-        <h1>Coffee House</h1>
-      </div>
-
       {/* Banner Section */}
-      {/* <div className="py-96 text-7xl text-blue-600" style={"background-image: url('../public/banner.png')"}> */}
       <div className="py-60 bg-banner-img bg-cover">
         <div className="px-2 lg:px-32 w-3/4">
           <h2 className="text-6xl text-white">Would you like a Cup of Delicious Coffee?</h2>
@@ -49,11 +43,11 @@ function App() {
         </div>
       </div>
 
-      <main className='my-20 custom-container'>
+      <main className='my-20 custom-container bg-section-bg'>
         <div className="text-center">
           <p className='secondary-font'>--Sip & Savor--</p>
           <h2 className='text-5xl my-3'>Our Popular Products</h2>
-          <Link>
+          <Link to={'/add-coffee'}>
             <button className='btn bg-[#E3B577] gap-4'>
               <span className='shadow-md tracking-widest'>Add Coffee</span>
               <FaCoffee></FaCoffee>
