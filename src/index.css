@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    font-family: 'Rancho', cursive;
+}
+
+@layer base {
+    .secondary-font {
+        font-family: 'Raleway', sans-serif;
+    }
+}
+
+
+@layer components {
+    .custom-container {
+        @apply px-2 lg:px-32 lg:mx-auto;
+    }
+}
