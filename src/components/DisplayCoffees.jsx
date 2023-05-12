@@ -4,6 +4,17 @@ import { Link } from 'react-router-dom';
 
 const DisplayCoffees = ({ coffee }) => {
     const { _id, photo, name, chef } = coffee;
+
+    const deleteCoffee = () => {
+        fetch(`http://localhost:5000/coffees/${_id}`, {
+            method: 'DELETE'
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            alert('Succsessfully deleted')
+        })
+    }
     
     return (
         <div className='bg-[#F5F4F1] p-4 pr-8 grid md:grid-cols-4 gap-4 items-center'>
@@ -22,7 +33,7 @@ const DisplayCoffees = ({ coffee }) => {
                 <Link to={`/updated-coffee/${_id}`} className='bg-[#3C393B] p-2 rounded'>
                     <FaPen className='text-white'></FaPen>
                 </Link>
-                <div className='bg-[#EA4744] p-2 rounded'>
+                <div onClick={deleteCoffee} className='bg-[#EA4744] p-2 rounded cursor-pointer'>
                     <FaTrash className='text-white'></FaTrash>
                 </div>
             </div>

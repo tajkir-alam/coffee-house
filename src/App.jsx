@@ -13,7 +13,7 @@ function App() {
     fetch('http://localhost:5000/coffees')
       .then(res => res.json())
       .then(data => setCoffees(data))
-  }, [])
+  }, [coffees])
 
   return (
     <>

@@ -18,7 +18,19 @@ const UpdateCoffee = () => {
         const photo = form.photo.value;
 
         const coffeeDetails = { name, chef, supplier, taste, category, details, photo };
-        console.log(coffeeDetails);
+
+        fetch(`http://localhost:5000/coffees/${loadedCoffees._id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(coffeeDetails),
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                alert('Updated Successfully')
+            })
 
 
     }
