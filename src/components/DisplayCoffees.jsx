@@ -1,21 +1,41 @@
 import React from 'react';
 import { FaEye, FaPen, FaTrash } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const DisplayCoffees = ({ coffee }) => {
     const { _id, photo, name, chef } = coffee;
 
     const deleteCoffee = () => {
-        fetch(`http://localhost:5000/coffees/${_id}`, {
-            method: 'DELETE'
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/coffees/${_id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.deletedCount > 0) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )  
+                        }
+                    })
+            }
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            alert('Succsessfully deleted')
-        })
+
     }
-    
+
     return (
         <div className='bg-[#F5F4F1] p-4 pr-8 grid md:grid-cols-4 gap-4 items-center'>
             <div className=''>
