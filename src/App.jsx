@@ -5,6 +5,7 @@ import categoryImg3 from './assets/icons/3.png'
 import categoryImg4 from './assets/icons/4.png'
 import { FaCoffee } from "react-icons/fa";
 import { useEffect, useState } from 'react'
+import DisplayCoffees from './components/DisplayCoffees'
 
 function App() {
   const [coffees, setCoffees] = useState([]);
@@ -62,8 +63,10 @@ function App() {
           </Link>
         </div>
 
-        <div className='mt-6'>
-          
+        <div className='mt-6 grid lg:grid-cols-2 gap-4'>
+          {coffees &&
+            coffees.map(coffee => <DisplayCoffees key={coffee._id} coffee={coffee}></DisplayCoffees>)
+          }
         </div>
       </main>
     </>

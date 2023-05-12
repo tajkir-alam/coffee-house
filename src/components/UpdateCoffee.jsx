@@ -1,8 +1,11 @@
 import React from 'react';
 import { FaArrowLeft } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
-const AddCoffee = () => {
+const UpdateCoffee = () => {
+    const loadedCoffees = useLoaderData();
+    console.log(loadedCoffees);
+
     const handleAddCoffee = event => {
         event.preventDefault();
         const form = event.target;
@@ -17,19 +20,7 @@ const AddCoffee = () => {
         const coffeeDetails = { name, chef, supplier, taste, category, details, photo };
         console.log(coffeeDetails);
 
-        fetch('http://localhost:5000/coffees', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(coffeeDetails),
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                alert('Coffee Added')
-                form.reset();
-            })
+
     }
 
     return (
@@ -87,4 +78,4 @@ const AddCoffee = () => {
     );
 };
 
-export default AddCoffee;
+export default UpdateCoffee;
